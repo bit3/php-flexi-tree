@@ -1,10 +1,9 @@
 <?php
 
 /**
- * ExtendedNavigation
- * extension for Contao Open Source CMS
+ * FlexiTree
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -13,13 +12,12 @@
 namespace Bit3\FlexiTree\Renderer;
 
 use Bit3\FlexiTree\Tree\Item;
-use FrontendTemplate;
 
 /**
  * Class UniversalTreeRenderer
  *
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -33,7 +31,7 @@ class UniversalTreeRenderer implements ItemRenderer
      *
      * @return string
      */
-    public function renderItem(Item $item, $index, $first, $last)
+    public function renderItem(Item $item, $depth, $index, $first, $last)
     {
         $attributes = array();
 
@@ -71,11 +69,22 @@ class UniversalTreeRenderer implements ItemRenderer
         // add href attribute
         $attributes['href'] = $item->getUrl();
 
-        $template = new FrontendTemplate('xnav_item');
+        // generate attributes
+        $out = '';
+        foreach ($attributes as $attr => $value) {
+            $out .= ' ';
+            if (empty($value)) {
+                $out .= $attr;
+            }
+            else {
+                $out .= sprintf('%s="%s"', $attr, specialchars($value));
+            }
+        }
 
-        $template->item       = $item;
-        $template->attributes = $attributes;
-
-        return $template->parse();
+        return sprintf(
+            '<a%s>%s</a>',
+            $out,
+            $item->getLabel()
+        );
     }
 }

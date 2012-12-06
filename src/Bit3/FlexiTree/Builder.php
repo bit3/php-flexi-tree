@@ -1,10 +1,9 @@
 <?php
 
 /**
- * ExtendedNavigation
- * extension for Contao Open Source CMS
+ * FlexiTree
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -14,29 +13,30 @@ namespace Bit3\FlexiTree;
 
 use ArrayObject;
 use Exception;
+use Bit3\FlexiTree\Tree\Item;
 use Bit3\FlexiTree\Tree\ItemFactory;
 use Bit3\FlexiTree\Tree\ItemDataSource;
 
 /**
- * Class Generator
+ * Class Builder
  *
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
-class Generator
+class Builder
 {
     /**
-     * List of item factories to use in this generator.
+     * List of item factories to use in this builder.
      *
      * @var ArrayObject
      */
     protected $itemFactories;
 
     /**
-     * List of item data sources to use in this generator.
+     * List of item data sources to use in this builder.
      *
      * @var ArrayObject
      */
@@ -52,7 +52,7 @@ class Generator
 
     /**
      * Include the root item when generate the tree.
-     * If <em>true</em> <code>Generator::generate()</code> will return an <code>Item</code> (default).
+     * If <em>true</em> <code>Builder::generate()</code> will return an <code>Item</code> (default).
      * Otherwise it will return an <code>ItemCollection</code>.
      *
      * @var bool
@@ -372,8 +372,8 @@ class Generator
      */
     public function generate()
     {
-        if (!$this->root) {
-            throw new Exception('Tree root model is missing, use Generator::setRoot() to define a tree root model.');
+        if ($this->root === null) {
+            throw new Exception('Tree root model is missing, use Builder::setRoot() to define a tree root model.');
         }
 
         $root = $this->generateItem($this->root);

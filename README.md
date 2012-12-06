@@ -69,7 +69,7 @@ To create a custom navigation, you need to implement the two interfaces `ItemDat
 Then you can create a `Generator` with this two classes:
 
 ```php
-use ExtendedNavigation\Tree\Generator;
+use Bit3\FlexiTree\Tree\Generator;
 
 // $myRootModel is any Model object, represents the root of the tree
 
@@ -108,9 +108,9 @@ $tree = $generator->generate();
 
 **MyItemDataSource**
 ```php
-use ExtendedNavigation\Tree\Generator;
-use ExtendedNavigation\Tree\Item;
-use ExtendedNavigation\Tree\ItemDataSource;
+use Bit3\FlexiTree\Tree\Generator;
+use Bit3\FlexiTree\Tree\Item;
+use Bit3\FlexiTree\Tree\ItemDataSource;
 
 class MyItemDataSource implements ItemDataSource
 {
@@ -118,7 +118,7 @@ class MyItemDataSource implements ItemDataSource
     /**
      * Collect a model list of all children for a parent item.
      *
-     * @param \ExtendedNavigation\Tree\Generator $generator
+     * @param \Bit3\FlexiTree\Tree\Generator $generator
      * @param \Model                             $parent
      *
      * @return array
@@ -151,19 +151,19 @@ class MyItemDataSource implements ItemDataSource
 
 **MyItemFactory**
 ```php
-use ExtendedNavigation\Tree\Generator;
-use ExtendedNavigation\Tree\Item;
-use ExtendedNavigation\Tree\ItemFactory;
+use Bit3\FlexiTree\Tree\Generator;
+use Bit3\FlexiTree\Tree\Item;
+use Bit3\FlexiTree\Tree\ItemFactory;
 
 class MyItemFactory implements ItemFactory
 {
     /**
      * Generate an Item from the Model.
      *
-     * @param \ExtendedNavigation\Tree\Generator $generator
+     * @param \Bit3\FlexiTree\Tree\Generator $generator
      * @param \PageModel                         $model
      *
-     * @return \ExtendedNavigation\Tree\Item
+     * @return \Bit3\FlexiTree\Tree\Item
      */
     public function generateItem(
         Generator $generator,

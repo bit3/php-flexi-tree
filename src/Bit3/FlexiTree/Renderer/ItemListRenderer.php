@@ -12,6 +12,7 @@
 namespace Bit3\FlexiTree\Renderer;
 
 use Bit3\FlexiTree\Tree\Item;
+use Bit3\FlexiTree\Tree\ItemCollection;
 
 /**
  * Class ItemRenderer
@@ -22,19 +23,7 @@ use Bit3\FlexiTree\Tree\Item;
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
-interface ItemRenderer
+interface ItemListRenderer
 {
-    /**
-     * Render an item into a single navigation link.
-     *
-     * @param Item   $item
-     * @param int    $depth
-     * @param int    $index
-     * @param bool   $first
-     * @param bool   $last
-     * @param string $renderedChildren
-     *
-     * @return string
-     */
-    public function renderItem(Item $item, $depth, $index, $first, $last, $renderedChildren);
+    public function renderItems(array $renderedItems, $depth);
 }

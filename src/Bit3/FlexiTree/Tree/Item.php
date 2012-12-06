@@ -1,10 +1,9 @@
 <?php
 
 /**
- * ExtendedNavigation
- * extension for Contao Open Source CMS
+ * FlexiTree
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -18,7 +17,7 @@ use Model;
  * Class Item
  *
  *
- * @package ExtendedNavigation
+ * @package FlexiTree
  * @author  Tristan Lins <tristan.lins@bit3.de>
  * @link    http://bit3.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -114,9 +113,6 @@ class Item
         if ($type !== null) {
             $this->type = $type;
         }
-        else if ($data instanceof Model) {
-            $this->type = preg_replace('#^tl_#', '', $data->getTable());
-        }
         else {
             $this->type = get_class($data);
         }
@@ -125,7 +121,7 @@ class Item
     }
 
     /**
-     * @return \Model
+     * @return object
      */
     public function getData()
     {
@@ -340,115 +336,8 @@ class Item
     }
 
     /**
-     * Magic getter.
-     *
-     * @param $name
+     * @return string
      */
-    function __get($name)
-    {
-        switch ($name) {
-            case 'type':
-            case 'label':
-            case 'title':
-            case 'url':
-            case 'position':
-            case 'attributes':
-            case 'children':
-                return $this->$name;
-
-            default:
-                return $this->attributes[$name];
-        }
-    }
-
-    /**
-     * Magic setter.
-     *
-     * @param string $name
-     * @param mixed  $value
-     */
-    function __set($name, $value)
-    {
-        switch ($name) {
-            case 'type':
-                $this->setType($value);
-                break;
-
-            case 'label':
-                $this->setLabel($value);
-                break;
-
-            case 'title':
-                $this->setTitle($value);
-                break;
-
-            case 'url':
-                $this->setUrl($value);
-                break;
-
-            case 'position':
-                $this->setPosition($value);
-                break;
-
-            case 'attributes':
-                $this->setAttributes($value);
-                break;
-
-            case 'children':
-                $this->setChildren($value);
-                break;
-
-            default:
-                unset($this->attributes[$name]);
-        }
-    }
-
-    /**
-     * Magic isset.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    function __isset($name)
-    {
-        switch ($name) {
-            case 'type':
-            case 'label':
-            case 'title':
-            case 'url':
-            case 'position':
-            case 'attributes':
-            case 'children':
-                return true;
-
-            default:
-                return isset($this->attributes[$name]);
-        }
-    }
-
-    /**
-     * Magic unset.
-     *
-     * @param string $name
-     */
-    function __unset($name)
-    {
-        switch ($name) {
-            case 'type':
-            case 'label':
-            case 'title':
-            case 'url':
-            case 'position':
-            case 'attributes':
-            case 'children':
-                $this->$name = null;
-
-            default:
-                unset($this->attributes[$name]);
-        }
-    }
-
     function __toString()
     {
         return sprintf(
