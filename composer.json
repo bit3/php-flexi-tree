@@ -1,0 +1,32 @@
+{
+	"name": "bit3/flexi-tree",
+	"description": "Object oriented framework to create menues.",
+	"license": "LGPL-3.0+",
+	"authors": [
+		{
+			"name": "Tristan Lins",
+			"email": "tristan.lins@bit3.de",
+			"homepage": "http://bit3.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.4"
+	},
+	"require-dev": {
+		"symfony/event-dispatcher": "~2"
+	},
+	"suggest": {
+		"symfony/event-dispatcher": "Use by the EventDrivenItemFactory"
+	},
+	"autoload": {
+		"psr-0": {
+			"Bit3\\FlexiTree": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-develop": "2.0.x-dev"
+		}
+	}
+}
