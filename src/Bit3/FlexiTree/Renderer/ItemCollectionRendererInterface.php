@@ -23,5 +23,8 @@ interface ItemCollectionRendererInterface
 	 *
 	 * @return mixed
 	 */
-	public function renderCollection(ItemCollectionInterface $collection, ItemRendererInterface $itemRenderer = null);
+	public function renderCollection(
+		ItemCollectionInterface $collection,
+		ItemRendererInterface $itemRenderer = null
+	);
 }

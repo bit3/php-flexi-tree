@@ -29,7 +29,7 @@ class Matcher
 	 */
 	protected $voter = array();
 
-	function __construct($defaultMatch = false)
+	public function __construct($defaultMatch = false)
 	{
 		$this->defaultMatch = (bool) $defaultMatch;
 	}
@@ -58,7 +58,7 @@ class Matcher
 
 	public function addVoter(VoterInterface $voter)
 	{
-		$hash = spl_object_hash($voter);
+		$hash               = spl_object_hash($voter);
 		$this->voter[$hash] = $voter;
 	}
 

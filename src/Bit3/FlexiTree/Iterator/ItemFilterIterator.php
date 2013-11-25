@@ -24,7 +24,7 @@ class ItemFilterIterator extends \FilterIterator
 	 */
 	protected $matcher;
 
-	function __construct(\Iterator $iterator, Matcher $matcher)
+	public function __construct(\Iterator $iterator, Matcher $matcher)
 	{
 		parent::__construct($iterator);
 		$this->matcher = $matcher;

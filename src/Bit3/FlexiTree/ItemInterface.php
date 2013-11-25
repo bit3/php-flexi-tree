@@ -16,7 +16,9 @@ use Bit3\FlexiTree\Matcher\Matcher;
 /**
  * Class ItemInterface
  *
- * Inspired by the {@link https://github.com/KnpLabs/KnpMenu/blob/master/src/Knp/Menu/ItemInterface.php KnpMenu ItemInterface}.
+ * Inspired by the
+ * {@link https://github.com/KnpLabs/KnpMenu/blob/master/src/Knp/Menu/ItemInterface.php
+ * KnpMenu ItemInterface}.
  */
 interface ItemInterface extends \Countable, \IteratorAggregate
 {

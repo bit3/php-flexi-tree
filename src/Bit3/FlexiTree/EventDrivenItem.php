@@ -20,7 +20,7 @@ class EventDrivenItem
 	/**
 	 * @param EventDrivenItemFactory $factory
 	 */
-	function __construct(EventDrivenItemFactory $factory)
+	public function __construct(EventDrivenItemFactory $factory)
 	{
 		$this->children = new EventDrivenItemCollection($this, $factory);
 	}

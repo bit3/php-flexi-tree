@@ -24,7 +24,7 @@ class CreateItemEvent extends Event
 	 */
 	protected $item;
 
-	function __construct(ItemInterface $item)
+	public function __construct(ItemInterface $item)
 	{
 		$this->item = $item;
 	}

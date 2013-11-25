@@ -36,7 +36,7 @@ class ItemCollection
 	 */
 	protected $items = array();
 
-	function __construct(ItemInterface $parentItem = null)
+	public function __construct(ItemInterface $parentItem = null)
 	{
 		$this->parentItem = $parentItem;
 	}
@@ -64,7 +64,7 @@ class ItemCollection
 	{
 		$hash = spl_object_hash($item);
 		if ($before) {
-			$hashes = array_keys($this->items);
+			$hashes     = array_keys($this->items);
 			$beforeHash = spl_object_hash($before);
 
 			$indexOf = array_search($beforeHash, $hashes);
@@ -75,7 +75,7 @@ class ItemCollection
 
 			$existingIndex = array_search($hash, $hashes);
 
-			if ($existingIndex === false || $existingIndex != ($indexOf-1)) {
+			if ($existingIndex === false || $existingIndex != ($indexOf - 1)) {
 				if ($existingIndex !== false) {
 					unset($this->items[$hash]);
 

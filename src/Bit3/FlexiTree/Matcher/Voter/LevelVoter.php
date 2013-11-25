@@ -22,7 +22,7 @@ class LevelVoter implements VoterInterface
 
 	protected $max = PHP_INT_MAX;
 
-	function __construct($max = 0, $min = 0)
+	public function __construct($max = 0, $min = 0)
 	{
 		$this->max = (int) $max;
 		$this->min = (int) $min;

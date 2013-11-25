@@ -37,7 +37,7 @@ class EventDrivenItemFactory implements ItemFactoryInterface
 	 */
 	protected $collectItemsEventName;
 
-	function __construct(
+	public function __construct(
 		EventDispatcher $eventDispatcher,
 		$createItemEventName = 'flexi-tree.create-item',
 		$collectItemsEventName = 'flexi-tree.collect-items'

@@ -19,5 +19,8 @@ use Bit3\FlexiTree\ItemInterface;
  */
 interface ItemRendererInterface
 {
-	public function renderItem(ItemInterface $item, ItemCollectionRendererInterface $collectionRenderer = null);
+	public function renderItem(
+		ItemInterface $item,
+		ItemCollectionRendererInterface $collectionRenderer = null
+	);
 }

@@ -16,6 +16,8 @@ use Traversable;
 
 /**
  * Class ItemInterface
+ *
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  */
 class Item implements ItemInterface
 {
@@ -100,7 +102,7 @@ class Item implements ItemInterface
 	 */
 	protected $cachedTrailStatus = null;
 
-	function __construct()
+	public function __construct()
 	{
 		$this->children = new ItemCollection($this);
 	}
@@ -170,7 +172,7 @@ class Item implements ItemInterface
 	 */
 	public function getLabel()
 	{
-		return $this->label ?: $this->name;
+		return $this->label ? : $this->name;
 	}
 
 	/**
@@ -367,7 +369,8 @@ class Item implements ItemInterface
 		do {
 			$item->invalidateTrailStatusCache(false);
 			$item = $item->getParent();
-		} while ($item);
+		}
+		while ($item);
 	}
 
 	/**
@@ -420,7 +423,8 @@ class Item implements ItemInterface
 	{
 		return $this->isRoot()
 			? $this
-			: $this->getParent()->getRoot();
+			: $this->getParent()
+				->getRoot();
 	}
 
 	/**
@@ -500,18 +504,18 @@ class Item implements ItemInterface
 	public function duplicate($deep = false)
 	{
 		/** @var Item $item */
-		$item = new static();
-		$item->type = $this->type;
-		$item->name = $this->name;
-		$item->uri = $this->uri;
-		$item->label = $this->label;
-		$item->attributes = $this->attributes;
-		$item->linkAttributes = $this->linkAttributes;
+		$item                  = new static();
+		$item->type            = $this->type;
+		$item->name            = $this->name;
+		$item->uri             = $this->uri;
+		$item->label           = $this->label;
+		$item->attributes      = $this->attributes;
+		$item->linkAttributes  = $this->linkAttributes;
 		$item->labelAttributes = $this->labelAttributes;
-		$item->extras = $this->extras;
+		$item->extras          = $this->extras;
 		$item->displayChildren = $this->displayChildren;
-		$item->display = $this->display;
-		$item->current = $this->current;
+		$item->display         = $this->display;
+		$item->current         = $this->current;
 
 		if ($deep) {
 			$children = $item->getChildren();
@@ -538,7 +542,8 @@ class Item implements ItemInterface
 	 */
 	public function count()
 	{
-		return $this->getChildren()->count();
+		return $this->getChildren()
+			->count();
 	}
 
 	/**
@@ -546,7 +551,8 @@ class Item implements ItemInterface
 	 */
 	public function getIterator(Matcher $matcher = null)
 	{
-		return $this->getChildren()->getIterator($matcher);
+		return $this->getChildren()
+			->getIterator($matcher);
 	}
 
 	/**
@@ -556,7 +562,7 @@ class Item implements ItemInterface
 	 */
 	public function invalidateStructureCaches($deep = true)
 	{
-		$this->cachedLevel = null;
+		$this->cachedLevel       = null;
 		$this->cachedTrailStatus = null;
 
 		if ($deep && $this->children instanceof ItemCollection) {

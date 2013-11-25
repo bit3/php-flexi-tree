@@ -34,7 +34,7 @@ class EventDrivenItemCollection
 	 * @param ItemInterface          $parentItem
 	 * @param EventDrivenItemFactory $factory
 	 */
-	function __construct(ItemInterface $parentItem, EventDrivenItemFactory $factory)
+	public function __construct(ItemInterface $parentItem, EventDrivenItemFactory $factory)
 	{
 		parent::__construct($parentItem);
 		$this->factory = $factory;

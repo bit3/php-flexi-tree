@@ -139,7 +139,8 @@ interface ItemCollectionInterface
 	public function toArray();
 
 	/**
-	 * Duplicate the collection, optionally with all item children, otherwise the duplicated items has no children.
+	 * Duplicate the collection, optionally with all item children,
+	 * otherwise the duplicated items has no children.
 	 *
 	 * @param boolean $deep Create a deep copy with all children.
 	 *

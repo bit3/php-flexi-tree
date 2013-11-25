@@ -14,10 +14,11 @@
 		"php": ">=5.3.4"
 	},
 	"require-dev": {
+		"bit3/php-coding-standard": "@dev",
 		"symfony/event-dispatcher": "~2"
 	},
 	"suggest": {
-		"symfony/event-dispatcher": "Use by the EventDrivenItemFactory"
+		"symfony/event-dispatcher": "Required for the EventDrivenItemFactory"
 	},
 	"autoload": {
 		"psr-0": {

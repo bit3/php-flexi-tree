@@ -31,10 +31,10 @@ class CollectItemsEvent extends Event
 	 */
 	protected $collection;
 
-	function __construct(EventDrivenItemFactory $factory, ItemCollectionInterface $collection)
+	public function __construct(EventDrivenItemFactory $factory, ItemCollectionInterface $collection)
 	{
-		$this->factory = $factory;
-		$this->collection=$collection;
+		$this->factory    = $factory;
+		$this->collection = $collection;
 	}
 
 	/**
