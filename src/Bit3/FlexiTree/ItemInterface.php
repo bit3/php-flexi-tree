@@ -283,6 +283,15 @@ interface ItemInterface extends \Countable, \IteratorAggregate
 	public function isCurrent();
 
 	/**
+	 * Enforce a trail status.
+	 *
+	 * @param boolean|null $trail If null is provided, the trail status will be detected by the child elements.
+	 *
+	 * @return ItemInterface
+	 */
+	public function setTrail($trail);
+
+	/**
 	 * Determine if the item is in the path to a current item.
 	 *
 	 * @return boolean

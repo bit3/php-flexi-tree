@@ -77,6 +77,11 @@ class Item implements ItemInterface
 	protected $current = false;
 
 	/**
+	 * @var bool
+	 */
+	protected $trail = null;
+
+	/**
 	 * @var ItemCollectionInterface|null
 	 */
 	protected $parentCollection = null;
@@ -384,8 +389,21 @@ class Item implements ItemInterface
 	/**
 	 * {@inheritdoc}
 	 */
+	public function setTrail($trail)
+	{
+		$this->trail = $trail !== null ? (bool) $trail : null;
+		return $this;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
 	public function isTrail()
 	{
+		if ($this->trail !== null) {
+			return $this->trail;
+		}
+
 		if ($this->cachedTrailStatus === null) {
 			$this->cachedTrailStatus = false;
 			foreach ($this->children as $child) {
