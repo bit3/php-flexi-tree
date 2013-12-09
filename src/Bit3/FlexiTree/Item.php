@@ -11,7 +11,7 @@
 
 namespace Bit3\FlexiTree;
 
-use Bit3\FlexiTree\Matcher\Matcher;
+use Bit3\FlexiTree\Condition\ConditionInterface;
 use Traversable;
 
 /**
@@ -567,10 +567,10 @@ class Item implements ItemInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getIterator(Matcher $matcher = null)
+	public function getIterator(ConditionInterface $condition = null)
 	{
 		return $this->getChildren()
-			->getIterator($matcher);
+			->getIterator($condition);
 	}
 
 	/**

@@ -9,19 +9,28 @@
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace Bit3\FlexiTree\Matcher\Voter;
+namespace Bit3\FlexiTree\Condition;
 
 use Bit3\FlexiTree\ItemInterface;
 
 /**
- * Class VoterInterface
+ * Class ConditionInterface
  */
-interface VoterInterface
+interface ConditionInterface
 {
 	/**
+	 * Determine if the condition match on the item.
+	 *
 	 * @param ItemInterface $item
 	 *
 	 * @return bool
 	 */
 	public function matchItem(ItemInterface $item);
+
+	/**
+	 * Return a string that describe the condition in a human readable way.
+	 *
+	 * @return string
+	 */
+	public function describe();
 }

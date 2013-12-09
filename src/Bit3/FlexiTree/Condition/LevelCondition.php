@@ -9,14 +9,14 @@
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace Bit3\FlexiTree\Matcher\Voter;
+namespace Bit3\FlexiTree\Condition;
 
 use Bit3\FlexiTree\ItemInterface;
 
 /**
- * Class LevelVoter
+ * Class LevelCondition
  */
-class LevelVoter implements VoterInterface
+class LevelCondition implements ConditionInterface
 {
 	protected $min = 0;
 
@@ -69,10 +69,25 @@ class LevelVoter implements VoterInterface
 	{
 		$level = $item->getLevel();
 
-		if ($this->min <= $level && $level <= $this->max) {
-			return true;
-		}
+		return $this->min <= $level && $level <= $this->max;
+	}
 
-		return null;
+	/**
+	 * {@inheritdoc}
+	 */
+	public function describe()
+	{
+		if ($this->min > 0 && $this->max < PHP_INT_MAX) {
+			return sprintf('%d <= item.level <= %d', $this->min, $this->max);
+		}
+		else if ($this->min > 0) {
+			return sprintf('%d <= item.level', $this->min);
+		}
+		else if ($this->max < PHP_INT_MAX) {
+			return sprintf('item.level <=', $this->max);
+		}
+		else {
+			return 'true';
+		}
 	}
 }

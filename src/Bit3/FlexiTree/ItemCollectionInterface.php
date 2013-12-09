@@ -11,7 +11,7 @@
 
 namespace Bit3\FlexiTree;
 
-use Bit3\FlexiTree\Matcher\Matcher;
+use Bit3\FlexiTree\Condition\ConditionInterface;
 use Countable;
 use Bit3\FlexiTree\Iterator\NavigationIterator;
 use IteratorAggregate;
@@ -155,11 +155,11 @@ interface ItemCollectionInterface
 	public function __clone();
 
 	/**
-	 * Retrieve an external iterator, if a matcher is given a FilterIterator is returned.
+	 * Retrieve an external iterator, if a condition is given a FilterIterator is returned.
 	 *
-	 * @param Matcher $matcher
+	 * @param ConditionInterface $condition
 	 *
 	 * @return \Traversable
 	 */
-	public function getIterator(Matcher $matcher = null);
+	public function getIterator(ConditionInterface $condition = null);
 }

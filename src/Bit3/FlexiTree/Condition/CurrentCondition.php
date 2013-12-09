@@ -9,24 +9,28 @@
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace Bit3\FlexiTree\Matcher\Voter;
+namespace Bit3\FlexiTree\Condition;
 
 use Bit3\FlexiTree\ItemInterface;
 
 /**
- * Class TrailVoter
+ * Class CurrentCondition
  */
-class TrailVoter implements VoterInterface
+class CurrentCondition implements ConditionInterface
 {
 	/**
 	 * {@inheritdoc}
 	 */
 	public function matchItem(ItemInterface $item)
 	{
-		if ($item->isTrail()) {
-			return true;
-		}
+		return $item->isCurrent();
+	}
 
-		return null;
+	/**
+	 * {@inheritdoc}
+	 */
+	public function describe()
+	{
+		return 'item.isCurrent';
 	}
 }

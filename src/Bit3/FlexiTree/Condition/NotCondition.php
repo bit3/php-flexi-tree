@@ -9,24 +9,22 @@
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace Bit3\FlexiTree\Iterator;
+namespace Bit3\FlexiTree\Condition;
 
-use Bit3\FlexiTree\Condition\ConditionInterface;
-use RecursiveIterator;
+use Bit3\FlexiTree\ItemInterface;
 
 /**
- * Class ItemFilterIterator
+ * Class NotCondition
  */
-class ItemFilterIterator extends \FilterIterator
+class NotCondition implements ConditionInterface
 {
 	/**
 	 * @var ConditionInterface
 	 */
 	protected $condition;
 
-	public function __construct(\Iterator $iterator, ConditionInterface $condition)
+	function __construct(ConditionInterface $condition)
 	{
-		parent::__construct($iterator);
 		$this->condition = $condition;
 	}
 
@@ -50,8 +48,16 @@ class ItemFilterIterator extends \FilterIterator
 	/**
 	 * {@inheritdoc}
 	 */
-	public function accept()
+	public function matchItem(ItemInterface $item)
 	{
-		return $this->condition->matchItem($this->current());
+		return !$this->condition->matchItem($item);
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function describe()
+	{
+		return sprintf('not %s', $this->condition->describe());
 	}
 }

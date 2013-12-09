@@ -12,7 +12,7 @@
 namespace Bit3\FlexiTree;
 
 use Bit3\FlexiTree\Iterator\ItemFilterIterator;
-use Bit3\FlexiTree\Matcher\Matcher;
+use Bit3\FlexiTree\Condition\ConditionInterface;
 use Countable;
 use Bit3\FlexiTree\Iterator\NavigationIterator;
 use IteratorAggregate;
@@ -245,12 +245,12 @@ class ItemCollection
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getIterator(Matcher $matcher = null)
+	public function getIterator(ConditionInterface $condition = null)
 	{
 		$iterator = new \ArrayIterator($this->items);
 
-		if ($matcher) {
-			$iterator = new ItemFilterIterator($iterator, $matcher);
+		if ($condition) {
+			$iterator = new ItemFilterIterator($iterator, $condition);
 		}
 
 		return $iterator;

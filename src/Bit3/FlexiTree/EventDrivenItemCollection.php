@@ -12,7 +12,7 @@
 namespace Bit3\FlexiTree;
 
 use Bit3\FlexiTree\Event\CollectItemsEvent;
-use Bit3\FlexiTree\Matcher\Matcher;
+use Bit3\FlexiTree\Condition\ConditionInterface;
 
 /**
  * Class EventDrivenItemCollection
@@ -136,10 +136,10 @@ class EventDrivenItemCollection
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getIterator(Matcher $matcher = null)
+	public function getIterator(ConditionInterface $condition = null)
 	{
 		$this->load();
-		return parent::getIterator($matcher);
+		return parent::getIterator($condition);
 	}
 
 	/**
