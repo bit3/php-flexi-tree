@@ -519,6 +519,23 @@ class Item implements ItemInterface
 	/**
 	 * {@inheritdoc}
 	 */
+	public function reduce(ConditionInterface $condition)
+	{
+		$item = $this->duplicate(false);
+
+		$children = $item->getChildren();
+		foreach ($this->children as $child) {
+			if ($condition->matchItem($child)) {
+				$children->add($child->reduce($condition));
+			}
+		}
+
+		return $item;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
 	public function duplicate($deep = false)
 	{
 		/** @var Item $item */
@@ -542,7 +559,7 @@ class Item implements ItemInterface
 			}
 		}
 
-		return $children;
+		return $item;
 	}
 
 	/**

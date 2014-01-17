@@ -159,7 +159,7 @@ interface ItemCollectionInterface
 	 *
 	 * @param ConditionInterface $condition
 	 *
-	 * @return \Traversable
+	 * @return \Traversable|\Iterator
 	 */
 	public function getIterator(ConditionInterface $condition = null);
 }

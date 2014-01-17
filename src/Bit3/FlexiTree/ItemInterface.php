@@ -370,6 +370,17 @@ interface ItemInterface extends \Countable, \IteratorAggregate
 	public function getChildren();
 
 	/**
+	 * Duplicate the item, and filter all children.
+	 * Return a duplicated item that only contains children, that match the condition.
+	 * The condition will not be applied to the item, reduce is called on.
+	 *
+	 * @param boolean $deep Create a deep copy with all children
+	 *
+	 * @return ItemInterface
+	 */
+	public function reduce(ConditionInterface $condition);
+
+	/**
 	 * Duplicate the item, optionally with all children, otherwise the duplicate has no children.
 	 *
 	 * @param boolean $deep Create a deep copy with all children
