@@ -77,14 +77,14 @@ class LevelCondition implements ConditionInterface
 	 */
 	public function describe()
 	{
-		if ($this->min > 0 && $this->max < PHP_INT_MAX) {
+		if ($this->min > 0 && $this->max != 0 && $this->max < PHP_INT_MAX) {
 			return sprintf('%d <= item.level <= %d', $this->min, $this->max);
 		}
 		else if ($this->min > 0) {
 			return sprintf('%d <= item.level', $this->min);
 		}
 		else if ($this->max < PHP_INT_MAX) {
-			return sprintf('item.level <=', $this->max);
+			return sprintf('item.level <= %d', $this->max);
 		}
 		else {
 			return 'true';
