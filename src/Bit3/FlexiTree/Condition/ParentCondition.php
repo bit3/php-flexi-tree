@@ -19,11 +19,11 @@ use Bit3\FlexiTree\ItemInterface;
 class ParentCondition implements ConditionInterface
 {
 	/**
-	 * @var ConditionInterface
+	 * @var ConditionInterface|null
 	 */
 	protected $condition;
 
-	function __construct(ConditionInterface $condition)
+	function __construct(ConditionInterface $condition = null)
 	{
 		$this->condition = $condition;
 	}
@@ -31,7 +31,7 @@ class ParentCondition implements ConditionInterface
 	/**
 	 * @param ConditionInterface $condition
 	 */
-	public function setCondition($condition)
+	public function setCondition(ConditionInterface $condition = null)
 	{
 		$this->condition = $condition;
 		return $this;
